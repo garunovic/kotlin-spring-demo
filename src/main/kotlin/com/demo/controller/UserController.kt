@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
 
 
-@RestController
+@RestController("/")
 class UserController {
 
     val users = mutableListOf(User("milos", 22), User("nemanja", 23))
 
-    @GetMapping("/")
+    @GetMapping
     fun findAll() = users
 
-    @GetMapping("/{name}")
+    @GetMapping("{name}")
     fun findByUsername(@PathVariable name: String) =
             users.find { it.username == name } ?: throw UserNotFoundException(name)
 
