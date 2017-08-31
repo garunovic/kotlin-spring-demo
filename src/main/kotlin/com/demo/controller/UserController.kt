@@ -29,4 +29,4 @@ data class User(val username: String, val age: Int)
 
 class UserNotFoundException(val name: String) : RuntimeException()
 
-class Error(val statuCode: Int, val message: String)
+class Error(val statusCode: Int, val message: String)
