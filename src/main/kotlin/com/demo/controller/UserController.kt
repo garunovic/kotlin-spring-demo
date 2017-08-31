@@ -16,11 +16,11 @@ class UserController {
     fun findAll() = users
 
     @GetMapping("/{name}")
-    fun findByUsername(@PathVariable name: String): User =
+    fun findByUsername(@PathVariable name: String) =
             users.find { it.username == name } ?: throw UserNotFoundException(name)
 
     @ExceptionHandler(UserNotFoundException::class)
-    fun userNotFound(ex: UserNotFoundException): ResponseEntity<Error> =
+    fun userNotFound(ex: UserNotFoundException) =
             ResponseEntity(Error(404, "User ${ex.name} not found!"), HttpStatus.NOT_FOUND)
 
 }
